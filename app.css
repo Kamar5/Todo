@@ -1,0 +1,18 @@
+.done-true {
+  text-decoration: line-through;
+  color: grey;
+}
+
+
+.closed{
+	margin-top: -45px
+}
+.menu{
+	margin-top: -25px;
+}
+.menu li{
+	width: 50px;
+	margin-right: 5px;
+	padding: 2px;
+	border-radius: 5px;
+}

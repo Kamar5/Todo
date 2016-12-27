@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+	<head>
+		<title>ToDo-App</title>
+
+		<meta charset="utf-8" />
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="app.css">
+
+	</head>
+	<body ng-app='app'>
+		<div class="container" ng-controller='appCtrl'>
+			<h1 class='text-center'>ToDo Application</h1>
+			<div class='row' style='margin-top: 10px;'>
+				<div class='col-md-6'>
+					<form name='todo' nonvalidate class='form-horizontal'>
+						<div class='form-group'>
+							<label class="control-label col-md-3" for="name">Name:</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="name" required>
+							</div>
+						</div>
+						<div class='form-group'>
+							<label class="control-label col-md-3" for="name">Description:</label>
+							<div class="col-md-9">
+								<textarea rows="4" cols="40" type="text" class="form-control" id="description" placeholder="Enter Description" ng-model="description"></textarea>
+							</div>
+						</div>
+						<div class="form-group">        
+					      <div class="col-md-offset-2 col-md-10">
+					        <button type="submit" class="btn btn-primary pull-right" ng-click="addTodo()" ng-disable='todo.name.$invalid'>Add</button>
+					      </div>
+    					</div>
+					</form>
+				</div>
+				<div class='col-md-6'>
+					<div class = "list-group">
+					   <div class = "list-group-item active">
+					      <h4 class = "list-group-item-heading">
+					        My todo List
+					      </h4>
+					      <!-- <ul class="menu nav nav-pills pull-right">
+					      	<li class='btn btn-info' ng-class="showTodo === 'all' ? 'active' : ''" ng-click="showTodo = 'all'">All</li>
+					      	<li class='btn btn-info' ng-class="showTodo === 'active' ? 'active' : ''" ng-click="showTodo = 'active'">Active</li>
+					      	<li class='btn btn-info' ng-class="showTodo === 'done' ? 'active' : ''" ng-click="showTodo = 'done'">Done</li>
+					      </ul> -->
+
+					      <ul class="menu nav nav-pills pull-right">
+					      	<li class='btn btn-info' ng-class="showTodo === 'all' ? 'active' : ''" ng-model="showTodo" uib-btn-radio="'all'">All</li>
+					      	<li class='btn btn-info' ng-class="showTodo === 'active' ? 'active' : ''" ng-model="showTodo" uib-btn-radio="'active'">Active</li>
+					      	<li class='btn btn-info' ng-class="showTodo === 'done' ? 'active' : ''" ng-model="showTodo" uib-btn-radio="'done'">Done</li>
+					      </ul>
+					   </div>
+					   
+					   <div class = "list-group-item" ng-repeat="todo in todos | filter : showTodoCheck(showTodo, todo)">
+
+					   			<h4 class = "list-group-item-heading">
+					   			<input type="checkbox" id="{{$index}}" ng-model="todo.isDone" class="done-{{todo.isDone}}" >
+					   			<label for="{{$index}}" class="done-{{todo.isDone}}"> {{todo.name}}</label>
+						   		</h4>
+						   		 <p class = "list-group-item-text">
+						   		 	<label for="{{$index}}" class="done-{{todo.isDone}}">{{todo.description}}</label>
+						   		 </p>
+						   		<a type="button" class="btn btn-danger btn-md pull-right closed" ng-click="removeToDo($index)">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</a>
+
+					   		
+					   </div>
+					</div>
+				</div>
+			</div>
+
+			
+
+		</div>
+
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.1/ui-bootstrap.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
