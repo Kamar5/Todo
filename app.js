@@ -5,7 +5,7 @@ app.controller('appCtrl', ['$scope', function ($scope) {
 	$scope.showTodo = 'active';
 	$scope.todos = [
 		{
-			name: 'learn arabic',
+			name: 'learn spanish',
 			description: 'I will learn spanish in month by studing every day',
 			isDone: false
 		},
